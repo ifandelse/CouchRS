@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CouchRS", "src\CouchRS\CouchRS.csproj", "{7AA28C8F-1A7A-4AC8-99D3-824DCA6BA70E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CouchRS.Test", "test\CouchRS.Test\CouchRS.Test.csproj", "{86566217-86ED-40A4-8AB7-546499326DA6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8713DB84-A4F2-46B2-9C3B-A710D302827B}"
+	ProjectSection(SolutionItems) = preProject
+		License.txt = License.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7AA28C8F-1A7A-4AC8-99D3-824DCA6BA70E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AA28C8F-1A7A-4AC8-99D3-824DCA6BA70E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AA28C8F-1A7A-4AC8-99D3-824DCA6BA70E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AA28C8F-1A7A-4AC8-99D3-824DCA6BA70E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86566217-86ED-40A4-8AB7-546499326DA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86566217-86ED-40A4-8AB7-546499326DA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86566217-86ED-40A4-8AB7-546499326DA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86566217-86ED-40A4-8AB7-546499326DA6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

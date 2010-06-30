@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7AA28C8F-1A7A-4AC8-99D3-824DCA6BA70E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CouchRS</RootNamespace>
+    <AssemblyName>CouchRS</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Irony">
+      <HintPath>..\..\lib\Irony\Irony.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportingServices.DataExtensions">
+      <HintPath>..\..\lib\Microsoft.ReportingServices.DataExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportingServices.Interfaces">
+      <HintPath>..\..\lib\Microsoft.ReportingServices.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\lib\symbiote\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Symbiote.Core">
+      <HintPath>..\..\lib\symbiote\Symbiote.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Grammar\CouchCommandVisitor.cs" />
+    <Compile Include="Grammar\CouchGrammar.cs" />
+    <Compile Include="Grammar\CouchQueryParameterVisitor.cs" />
+    <Compile Include="Grammar\CouchRequestContainer.cs" />
+    <Compile Include="Grammar\KeyOutputTransformation\ArrayKeyTransformer.cs" />
+    <Compile Include="Grammar\KeyOutputTransformation\IKeyTransformer.cs" />
+    <Compile Include="Grammar\KeyOutputTransformation\ObjectKeyTransformer.cs" />
+    <Compile Include="Grammar\KeyOutputTransformation\ValueKeyTransformer.cs" />
+    <Compile Include="DataProcessingExtension\CouchDataParameter.cs" />
+    <Compile Include="DataProcessingExtension\CouchDataParameterCollection.cs" />
+    <Compile Include="DataProcessingExtension\CouchDataProviderException.cs" />
+    <Compile Include="DataProcessingExtension\CouchDataReader.cs" />
+    <Compile Include="DataProcessingExtension\CouchDbCommand.cs" />
+    <Compile Include="DataProcessingExtension\CouchDbConnection.cs" />
+    <Compile Include="DataProcessingExtension\CouchDbTransaction.cs" />
+    <Compile Include="DataProcessingExtension\CouchURI.cs" />
+    <Compile Include="DataProcessingExtension\Feed.cs" />
+    <Compile Include="Json\JsonResponseVisitor.cs" />
+    <Compile Include="Json\JsonVisitor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

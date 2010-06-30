@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{86566217-86ED-40A4-8AB7-546499326DA6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CouchRS.Test</RootNamespace>
+    <AssemblyName>CouchRS.Test</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Irony, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ca48ace7223ead47, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Irony\Irony.dll</HintPath>
+    </Reference>
+    <Reference Include="Machine.Specifications, Version=0.3.0.0, Culture=neutral, PublicKeyToken=5c474de7a495cff1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\mspec\Machine.Specifications.dll</HintPath>
+    </Reference>
+    <Reference Include="Machine.Specifications.GallioAdapter, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\mspec\Machine.Specifications.GallioAdapter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportingServices.DataExtensions">
+      <HintPath>..\..\lib\Microsoft.ReportingServices.DataExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportingServices.Interfaces">
+      <HintPath>..\..\lib\Microsoft.ReportingServices.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\..\lib\mock\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\symbiote\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\..\lib\mock\Rhino.Mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="Symbiote.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\symbiote\Symbiote.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataProcessingExtension\when_testing_couch_data_reader.cs" />
+    <Compile Include="DataProcessingExtension\when_testing_couch_db_connection.cs" />
+    <Compile Include="DataProcessingExtension\when_testing_create_parameter_method.cs" />
+    <Compile Include="Json\when_flattening_json_with_visitor.cs" />
+    <Compile Include="Json\when_flattening_via_json_visitor_on_complex_test_model.cs" />
+    <Compile Include="Json\when_testing_JsonResponseVisitor_on_one_view_and_one_document_style_response.cs" />
+    <Compile Include="Json\when_testing_JsonResponseVisitor_on_one_view_style_response.cs" />
+    <Compile Include="Json\when_testing_JsonResponseVisitor_on_two_view_style_responses.cs" />
+    <Compile Include="DataProcessingExtension\when_testing_simple_parameter.cs" />
+    <Compile Include="DataProcessingExtension\with_couch_data_reader.cs" />
+    <Compile Include="DataProcessingExtension\with_couch_db_command.cs" />
+    <Compile Include="DataProcessingExtension\with_couch_db_connection.cs" />
+    <Compile Include="Json\when_visiting_object_with_a_nested_array.cs" />
+    <Compile Include="Json\when_visiting_object_with_one_complex_property.cs" />
+    <Compile Include="Json\when_visiting_object_with_one_property_containing_an_array_of_complex_types.cs" />
+    <Compile Include="Json\when_visiting_object_with_one_property_containing_an_array_of_value_types.cs" />
+    <Compile Include="Json\when_visiting_object_with_two_arrays.cs" />
+    <Compile Include="Json\with_complex_test_model.cs" />
+    <Compile Include="Json\with_couch_json.cs" />
+    <Compile Include="Json\with_insano_graph.cs" />
+    <Compile Include="Json\with_json_response_visitor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryParser\when_flattening_object_with_one_complex_property.cs" />
+    <Compile Include="QueryParser\when_parsing_parameters_from_couch_view_query.cs" />
+    <Compile Include="QueryParser\when_parsing_query_with_a_union.cs" />
+    <Compile Include="QueryParser\when_visiting_a_query_with_allow_stale_statement.cs" />
+    <Compile Include="QueryParser\when_visiting_a_query_with_all_query_options_set_except_reduce.cs" />
+    <Compile Include="QueryParser\when_visiting_a_query_with_array_key.cs" />
+    <Compile Include="QueryParser\when_visiting_a_query_with_a_between_clause.cs" />
+    <Compile Include="QueryParser\when_visiting_a_query_with_a_boolean_literal.cs" />
+    <Compile Include="QueryParser\when_visiting_a_query_with_a_document_statement.cs" />
+    <Compile Include="QueryParser\when_visiting_a_query_with_a_document_statement_using_a_hard_coded_key.cs" />
+    <Compile Include="QueryParser\when_visiting_a_query_with_a_mix_of_range_and_parameter_and_literal_where_clauses.cs" />
+    <Compile Include="QueryParser\when_visiting_a_query_with_a_numeric_literal.cs" />
+    <Compile Include="QueryParser\when_visiting_a_query_with_a_parameter.cs" />
+    <Compile Include="QueryParser\when_visiting_a_query_with_a_string_literal.cs" />
+    <Compile Include="QueryParser\when_visiting_a_query_with_a_string_parameter_containing_a_number.cs" />
+    <Compile Include="QueryParser\when_visiting_a_query_with_a_union_of_a_document_statement_and_a_view_statement.cs" />
+    <Compile Include="QueryParser\when_visiting_a_query_with_a_where_clause_not_in_key_list.cs" />
+    <Compile Include="QueryParser\when_visiting_a_query_with_descending_statement.cs" />
+    <Compile Include="QueryParser\when_visiting_a_query_with_grouped_statement.cs" />
+    <Compile Include="QueryParser\when_visiting_a_query_with_include_docs_statement.cs" />
+    <Compile Include="QueryParser\when_visiting_a_query_with_inclusive_end_statement.cs" />
+    <Compile Include="QueryParser\when_visiting_a_query_with_limit_statement.cs" />
+    <Compile Include="QueryParser\when_visiting_a_query_with_null_operand.cs" />
+    <Compile Include="QueryParser\when_visiting_a_query_with_object_key.cs" />
+    <Compile Include="QueryParser\when_visiting_a_query_with_only_a_from_clause.cs" />
+    <Compile Include="QueryParser\when_visiting_a_query_with_reduce_statement.cs" />
+    <Compile Include="QueryParser\when_visiting_a_query_with_single_value_key.cs" />
+    <Compile Include="QueryParser\when_visiting_a_query_with_skip_statement.cs" />
+    <Compile Include="QueryParser\when_visiting_a_query_with_where_clauses_out_of_order.cs" />
+    <Compile Include="QueryParser\with_a_query_that_has_a_parameter.cs" />
+    <Compile Include="QueryParser\with_couch_view_query.cs" />
+    <Compile Include="TestModel\Customer.cs" />
+    <Compile Include="TestModel\Invoice.cs" />
+    <Compile Include="TestModel\InvoiceAdjustment.cs" />
+    <Compile Include="TestModel\InvoiceLineItem.cs" />
+    <Compile Include="TestModel\Order.cs" />
+    <Compile Include="TestModel\OrderLineItem.cs" />
+    <Compile Include="TestModel\OrderLineItemTax.cs" />
+    <Compile Include="TestModel\Payment.cs" />
+    <Compile Include="TestModel\Shipment.cs" />
+    <Compile Include="TestModel\ShippingAddress.cs" />
+    <Compile Include="TestModel\TestModelHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\CouchRS\CouchRS.csproj">
+      <Project>{7AA28C8F-1A7A-4AC8-99D3-824DCA6BA70E}</Project>
+      <Name>CouchRS</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

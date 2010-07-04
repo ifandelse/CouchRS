@@ -10,6 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		License.txt = License.txt
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{ACAF0FDD-DBC9-4225-BEA4-177F8AF0DD40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorksModel", "AdventureWorksModel\AdventureWorksModel.csproj", "{D9D6954F-A51E-466A-B47A-5AA303F13B4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,8 +28,15 @@ Global
 		{86566217-86ED-40A4-8AB7-546499326DA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86566217-86ED-40A4-8AB7-546499326DA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86566217-86ED-40A4-8AB7-546499326DA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9D6954F-A51E-466A-B47A-5AA303F13B4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9D6954F-A51E-466A-B47A-5AA303F13B4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9D6954F-A51E-466A-B47A-5AA303F13B4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9D6954F-A51E-466A-B47A-5AA303F13B4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D9D6954F-A51E-466A-B47A-5AA303F13B4C} = {ACAF0FDD-DBC9-4225-BEA4-177F8AF0DD40}
 	EndGlobalSection
 EndGlobal

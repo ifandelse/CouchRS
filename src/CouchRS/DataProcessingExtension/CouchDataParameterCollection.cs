@@ -1,34 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.ReportingServices.DataProcessing;
 
 namespace CouchRS.DataProcessingExtension
 {
-    public class CouchDataParameterCollection : IDataParameterCollection
+    public class CouchDataParameterCollection : List<CouchDataParameter>, IDataParameterCollection
     {
-        private IList<CouchDataParameter> _params;
-
-        public CouchDataParameterCollection()
-        {
-            Init();
-        }
-
-        private void Init()
-        {
-            _params = new List<CouchDataParameter>();
-        }
-
-        public void Clear()
-        {
-            _params.Clear();
-        }
-
         #region IDataParameterCollection Members
 
         public int Add(IDataParameter parameter)
         {
-            _params.Add((CouchDataParameter)parameter);
-            return _params.Count - 1;
+            if (this.ToList().Where(x => x.ParameterName == parameter.ParameterName).Count() == 0)
+            {
+                base.Add((CouchDataParameter)parameter);
+                return Count - 1;
+            }
+            else
+            {
+                return IndexOf(this.ToList().First(x => x.ParameterName == parameter.ParameterName));
+            }
         }
 
         #endregion
@@ -37,7 +28,7 @@ namespace CouchRS.DataProcessingExtension
 
         public IEnumerator GetEnumerator()
         {
-            return _params.GetEnumerator();
+            return base.GetEnumerator();
         }
 
         #endregion

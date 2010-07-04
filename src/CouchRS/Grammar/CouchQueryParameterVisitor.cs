@@ -18,7 +18,7 @@ namespace CouchRS.Grammar
 
         static CouchQueryParameterVisitor()
         {
-            _parser = new Parser(new CouchGrammar());
+            _parser = new Parser(new SeeNoSQLGrammar());
         }
 
         #endregion

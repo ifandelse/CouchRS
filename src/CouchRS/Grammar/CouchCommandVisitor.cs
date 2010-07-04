@@ -22,7 +22,7 @@ namespace CouchRS.Grammar
 
         static CouchCommandVisitor()
         {
-            _parser = new Parser(new Grammar.CouchGrammar());
+            _parser = new Parser(new Grammar.SeeNoSQLGrammar());
         } 
 
         #endregion

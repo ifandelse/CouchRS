@@ -4,14 +4,14 @@ namespace CouchRS.Grammar
 {
     /// <summary>
     /// This class defines the query syntax that will be used to create a syntax
-    /// tree that can then be parsed to build up a request againts a CouchDB.
+    /// tree that can then be parsed to build up a request againts a NoSQL DB (like CouchDB).
     /// The Irony Project is awesome.  Check it out at: http://irony.codeplex.com/
     /// </summary>
-    [Language("CouchQuery", "1.0", "Basic language for querying couchdb views and documents.")]
-    public class CouchGrammar : Irony.Parsing.Grammar
+    [Language("SeeNoSQL", "1.0", "Basic language for querying NoSQL stores (like CouchDB views and documents).")]
+    public class SeeNoSQLGrammar : Irony.Parsing.Grammar
     {
 
-        public CouchGrammar()
+        public SeeNoSQLGrammar()
             : base(false)
         {
             //Terminals

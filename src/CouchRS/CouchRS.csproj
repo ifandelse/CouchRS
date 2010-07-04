@@ -58,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Grammar\CouchCommandVisitor.cs" />
-    <Compile Include="Grammar\CouchGrammar.cs" />
+    <Compile Include="Grammar\SeeNoSQLGrammar.cs" />
     <Compile Include="Grammar\CouchQueryParameterVisitor.cs" />
     <Compile Include="Grammar\CouchRequestContainer.cs" />
     <Compile Include="Grammar\KeyOutputTransformation\ArrayKeyTransformer.cs" />

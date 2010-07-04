@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using Microsoft.ReportingServices.DataProcessing;
 using CouchRS.Grammar;
@@ -11,6 +13,20 @@ namespace CouchRS.DataProcessingExtension
     /// </summary>
     public class CouchDbCommand : IDbCommand, IDbCommandAnalysis
     {
+        #region static members
+
+        // When you query in Query Designer and then close out the Data Set dialog, a SECOND
+        // call is made to "ExecuteReader()" on the command object, but it's a NEW instance of
+        // the command object that no longer has the param values that were originally submitted.
+        // This second call to ExecuteReader() is "GetSchemaOnly" behavior, so this static dictionary
+        // is to keep track of the most recent value of a param so that a valid query can be made
+        // against Couch, and an accurate field list returned to populate the Data Set's field list.
+        private static Dictionary<string, object> _lastParamValues = new Dictionary<string, object>();
+
+        #endregion
+
+
+
         private CouchCommandVisitor _visitor;
         private WebClient _webClient;
         private CouchQueryParameterVisitor _paramVisitor;
@@ -22,17 +38,25 @@ namespace CouchRS.DataProcessingExtension
             Connection = connection;
             Parameters = new CouchDataParameterCollection();
             _webClient = webClient;
-            _webClient.Credentials = new NetworkCredential(connection.UserName, connection.Password);
+            if(!String.IsNullOrEmpty(connection.UserName))
+            {
+                _webClient.Credentials = new NetworkCredential(connection.UserName, connection.Password);
+            }
             _visitor = visitor;
             _paramVisitor = parameterVisitor;
             _jsonResponseVisitor = jsonResponseVisitor;
         }
 
-        public CouchDbCommand(CouchDbConnection connection)
+        public CouchDbCommand(CouchDbConnection connection) 
             : this(connection, new WebClient(), null, new CouchQueryParameterVisitor(), new JsonResponseVisitor())
         {
             _visitor = new CouchCommandVisitor();
-            
+        }
+
+        protected CouchDbCommand(IDbCommand command)
+            : this(((CouchDbCommand)command).Connection, new WebClient(), null, new CouchQueryParameterVisitor(), new JsonResponseVisitor())
+        {
+            _visitor = new CouchCommandVisitor();
         }
 
         public CouchDbConnection Connection { get; protected set; }
@@ -51,6 +75,14 @@ namespace CouchRS.DataProcessingExtension
 
         public virtual IDataReader ExecuteReader(CommandBehavior behavior)
         {
+            if(behavior == CommandBehavior.SchemaOnly)
+            {
+                RestoreLastKnownParamValues();
+            }
+            else
+            {
+                StoreLastKnownParamValues();
+            }
             var responses = new List<string>();
             _visitor.Visit(this);
             _visitor.Requests.ForEach(a => responses.Add(_webClient.DownloadString(a.Uri.ToString())));
@@ -89,5 +121,25 @@ namespace CouchRS.DataProcessingExtension
         }
 
         #endregion
+
+        private void StoreLastKnownParamValues()
+        {
+            foreach(var param in Parameters)
+            {
+                _lastParamValues[((CouchDataParameter) param).ParameterName] = ((CouchDataParameter) param).Value;
+            }
+        }
+
+        private void RestoreLastKnownParamValues()
+        {
+            ((CouchDataParameterCollection)Parameters)
+                .ForEach(a =>
+                            {
+                                if(_lastParamValues.ContainsKey(a.ParameterName))
+                                {
+                                    a.Value = _lastParamValues[a.ParameterName];
+                                }
+                            });
+        }
     }
 }

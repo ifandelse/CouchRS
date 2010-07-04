@@ -27,7 +27,8 @@ namespace CouchRS.DataProcessingExtension
 
         public virtual CouchUri BuildCouchUri()
         {
-            return new CouchUri(_uri.Scheme,_uri.Host, _uri.Port, _uri.AbsolutePath.TrimStart('/'));
+            var uri = new CouchUri(_uri.Scheme,_uri.Host, _uri.Port, _uri.AbsolutePath.TrimStart('/'));
+            return uri;
         }
 
         #region IDbConnection Members
@@ -72,7 +73,7 @@ namespace CouchRS.DataProcessingExtension
 
         #region IExtension Members
 
-        public string LocalizedName { get { return "Couch Database Connection"; } }
+        public string LocalizedName { get { return "CouchDB Connection"; } }
 
         public void SetConfiguration(string configuration)
         {

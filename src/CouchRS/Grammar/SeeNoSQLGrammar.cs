@@ -23,8 +23,7 @@ namespace CouchRS.Grammar
             var number = new NumberLiteral("number");
             var intVal = new NumberLiteral("integer", NumberOptions.IntOnly);
             var stringLiteral = new StringLiteral("string", "'", StringOptions.AllowsDoubledQuote);
-            var id = new IdentifierTerminal("id");
-            id.Priority = Terminal.HighestPriority;
+            var id = new IdentifierTerminal("id") {Priority = Terminal.HighestPriority};
             var param = new IdentifierTerminal("param");
             param.AddPrefix("@",IdOptions.None);
             param.Priority = Terminal.LowestPriority;
@@ -32,6 +31,8 @@ namespace CouchRS.Grammar
             constantTerminal.Add("true", true);
             constantTerminal.Add("false", false);
             constantTerminal.Add("null", null);
+            constantTerminal.Add("MAX_STRING", new object());
+            constantTerminal.Add("MIN_STRING", null);
             constantTerminal.Priority = Terminal.HighestPriority;
 
             var ALL = ToTerm("ALL");

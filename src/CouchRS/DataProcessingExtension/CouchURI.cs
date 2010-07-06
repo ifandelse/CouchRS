@@ -154,7 +154,8 @@ namespace CouchRS.DataProcessingExtension
 
         public CouchUri Group()
         {
-            return Group(1);
+            _queryParams["group"] = "true";
+            return this;
         }
 
         public CouchUri Group(int groupLevel)

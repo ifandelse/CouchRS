@@ -12,6 +12,14 @@
       <Name>Customer Summary.rdl</Name>
       <FullPath>Customer Summary.rdl</FullPath>
     </ProjectItem>
+    <ProjectItem>
+      <Name>Territory Group Sales by Year.rdl</Name>
+      <FullPath>Territory Group Sales by Year.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Region to Average Comparison Chart.rdl</Name>
+      <FullPath>Region to Average Comparison Chart.rdl</FullPath>
+    </ProjectItem>
   </Reports>
   <Configurations>
     <Configuration>

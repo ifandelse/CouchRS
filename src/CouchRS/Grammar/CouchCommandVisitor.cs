@@ -195,20 +195,30 @@ namespace CouchRS.Grammar
                 throw new Exception(String.Format("'{0}' from where clause not specified in the key declaration", keyName));
 
             if (node.ChildNodes[1].Term.Name.ToLower() == "between")
-                requests.ForEach(a =>
-                                     {
-                                         a.IsRange = true;
-                                         a.StartKeys[keyName] = node.ChildNodes[2].FirstChild.Term.Name == "param" ?
-                                                                    GetParamValue(node.ChildNodes[2].FirstChild) :
-                                                                    node.ChildNodes[2].FirstChild.Token.Value;
-                                         a.EndKeys[keyName] = node.ChildNodes[2].LastChild.Term.Name == "param" ?
-                                                                    GetParamValue(node.ChildNodes[2].LastChild) :
-                                                                    node.ChildNodes[2].LastChild.Token.Value;
-                                     });   
+                ParseBetweenExpression(node, requests, keyName);   
             else
-                requests.ForEach(a => a.StartKeys[keyName] = a.EndKeys[keyName] = node.ChildNodes[2].Term.Name == "param" ?
-                                                                                        GetParamValue(node.ChildNodes[2]) :
-                                                                                        node.ChildNodes[2].Token.Value);
+                ParseEqualsExpression(node, requests, keyName);
+        }
+
+        private void ParseEqualsExpression(ParseTreeNode node, List<CouchRequestContainer> requests, string keyName)
+        {
+            requests
+                .ForEach(a => a.StartKeys[keyName] = a.EndKeys[keyName] = node.ChildNodes[2].Term.Name == "param" ?
+                                                                            GetParamValue(node.ChildNodes[2]) :
+                                                                            node.ChildNodes[2].Token.Value);
+        }
+
+        private void ParseBetweenExpression(ParseTreeNode node, List<CouchRequestContainer> requests, string keyName)
+        {
+            requests.ForEach(a => {
+                                     a.IsRange = true;
+                                     a.StartKeys[keyName] = node.ChildNodes[2].FirstChild.Term.Name == "param" ?
+                                                                GetParamValue(node.ChildNodes[2].FirstChild) :
+                                                                node.ChildNodes[2].FirstChild.Token.Value;
+                                     a.EndKeys[keyName] = node.ChildNodes[2].LastChild.Term.Name == "param" ?
+                                                                GetParamValue(node.ChildNodes[2].LastChild) :
+                                                                node.ChildNodes[2].LastChild.Token.Value;
+                                 });
         }
 
         private object GetParamValue(ParseTreeNode node)
